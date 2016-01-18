@@ -1,0 +1,179 @@
+body{
+	font-family:Liberation Serif;
+}
+
+
+/* Creazione menu*/
+/* titolo, logo, del sito*/
+.titolo{
+	height: 65px;
+	right: 20px;
+	width:40%;
+	float:left;
+	background-color: white;
+	display: inline-block;
+	text-align:center;
+	font-size:  35px;
+	font-style: italic;
+	font-weight: 700;
+	color: gray;
+}
+
+.titolo a{
+	position:relative;
+	bottom:10px;
+	top:70%;
+	left:14%;	
+	}
+
+/* manipolazione menu a sinista*/
+.menusx{
+	height: 15%;
+	width:38%;
+	float:left;
+	background-color: white;
+	display: inline-block;
+	border-right: 5px solid gray;
+	border-left: 5px solid #D03316; /* rosso */
+}
+
+.menusx ul{
+	position:relative;
+	top:10%;
+	color: gray;
+	}
+
+.menusx ul a{
+	color:gray;
+	position:relative;
+	font-weight: 700;
+}
+
+.menusx li ul{
+	display: none;
+	position:relative;
+}
+
+/* comportamento menu sinistra al click*/
+.menusx li:active ul, li:hover ul{
+	display: block;
+}
+
+.menusx li:hover a{
+	color: #D03316; /* rosso */
+	position:relative;
+}
+
+/* manipolazione menu a destra*/
+.menudx{
+	height: 15%;
+	width:20%;
+	float:left;
+	background-color: white;
+	display: inline-block;
+
+}
+
+.menudx ul{
+	position:relative;
+	top:30%;
+	color: gray;
+	}
+
+.menudx li ul{
+	display: none;
+	position:relative;
+}
+
+.menudx ul li a{
+	color: gray;
+	font-weight: 700;
+	}
+
+/* comportamento menu destra al click / passaggio del mouse*/
+.menudx li:hover a{
+	color: #D03316; /* rosso */
+	position:relative;
+}
+
+.menudx li:active ul, li:hover ul{
+	display: block;
+}
+
+/* spazio presente sotto il menu */
+.sottomenu{
+	padding:15px;
+	height:15%;
+	width:100%;
+	border-bottom: 1px solid gray;
+	clear:both;	
+}
+
+/* Gestione contenuto del sito, blocco centrale */
+.contenuto{
+	padding:15px;
+	top:20px;
+	bottom:20px;
+	font-family:Liberation Serif;
+	height:50px;
+	position:relative;
+	width:1250px;
+	left:160px;
+	display: block;
+	position:relative;
+	text-align: center;
+	margin: center;
+	font-weight: 700;
+	line-height: 25px; /* centrare verticalmente */
+}
+
+/* gestione footer */
+footer{
+	top:350px;
+	font-family:Liberation Serif;
+	height:50px;
+	position:relative;
+	width:1250px;
+	left:160px;
+	color: gray;
+	font-weight: 700;	
+	position: relative;
+}
+
+footer a{
+	font-family:Liberation Serif;
+	color: gray;
+	font-weight: 700;
+	text-align: left;
+}
+
+/*  Gestione tabelle */
+
+table{
+	text-align:center;
+	background-color:white;
+}
+
+th.thprd{
+
+	font: italic;
+	font-size: 16px;
+	color: white;
+	background-color: #A00000;
+	border: 1px solid black;
+	padding: 6px;
+}
+
+table#tbprd td{
+
+	font: italic;
+	padding: 10px;
+	border: 1px solid black;
+	color: #141414;
+}
+
+table#tbprd{
+
+	border-collapse: collapse;
+
+}
