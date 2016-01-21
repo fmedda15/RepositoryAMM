@@ -6,6 +6,7 @@
 		<?php include_once('inc/barraMenuUser.php');?>
 	
 		<div class="contenuto"> 
+			<p> Comments <br><br> </p>
 			<?php
 
 				$query = $this->modelUser->viewCommentsUser(); // Richiamo la viewComments
@@ -14,5 +15,4 @@
 		</div>
 	
 	</body>
-	<?php include_once('inc/footer.php');?>
 </html>
