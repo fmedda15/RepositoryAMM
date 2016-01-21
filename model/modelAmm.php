@@ -1,11 +1,123 @@
 <?php
 
 /*Model dell'amministratore, racchiude tutte le funzioni che possono essere eseguite dall'amministratore, quali : 
-	Aggiunta di commenti, attori, eliminazione User, Attori e commenti, oltre alla visualizzazione di tutti i dati appartenenti a utenti, attori e commenti
+	Aggiunta di commenti, attori, eliminazione User, Attori e commenti, oltre alla visualizzazione di tutti i dati appartenenti a utenti, attori, commenti e segnalazione di problemi
 */
 
 	class ModelAmm{
 		
+		// funzione per l'eliminazione di una segnalazione dal DB
+		function deleteReport($id){
+			
+			$mysqli = new mysqli(); //Creazione dell'istanza 
+			$mysqli->connect(Settings::$db_host,Settings::$db_user,Settings::$db_password,Settings::$db_name); //connessione al db
+	
+			//verifico la presenza di errori di connessione al db
+
+			if($mysqli->connect_errno != 0){
+				
+				//c'è un errore e lo gestisco
+				$idErrore = $mysqli->connect_errno; //salvo l'id dell'errore
+				$msg = $mysqli->connect_error; //salvo il messaggio dell'errore
+				return "Errore connessione al db";
+			}
+			else{
+				//connessione effettuata con successo. Posso lavorare sul database			
+				//eseguo la query
+				$query = " SELECT * FROM segnalazioni WHERE idProblem='$id' ";
+				//salvo il risultato della query
+				$risultato = $mysqli->query($query);//mando in esecuzione la query
+			
+				if($risultato->num_rows == 1){ //vuol dire che l'id inserito corrisponde ad una segnalazione, quindi la segnalazione richiesta esiste						
+						//ho una query senza errori. Eseguo la query per l'eliminazione dell'attore dal DB
+						$query2 = "DELETE FROM segnalazioni WHERE idProblem='$id' ";
+						
+						$risultato = $mysqli->query($query2);
+
+						if($mysqli->errno > 0){
+							
+							//in caso di errore
+							//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
+							$mysqli->close();
+							
+							return "Non è stato possibile eliminare la segnalazione!";					
+						}
+						else{
+							//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
+							$mysqli->close();
+						
+							return "Segnalazione eliminata correttamente";
+
+						}
+					
+				}
+			}	
+			
+			
+		}//fine deleteReport()
+
+		
+		/* Funzione che permette di visualizzare tutte le segnalazioni inviate al DB */		
+		public function getReports(){
+
+			$mysqli = new mysqli(); //Creazione dell'istanza 
+			$mysqli->connect(Settings::$db_host,Settings::$db_user,Settings::$db_password,Settings::$db_name); //connessione al db
+	
+			//verifico la presenza di errori di connessione al db
+
+			if($mysqli->connect_errno != 0){
+				
+				//c'è un errore e lo gestisco
+				$idErrore = $mysqli->connect_errno; //salvo l'id dell'errore
+				$msg = $mysqli->connect_error; //salvo il messaggio dell'errore
+				return "Errore connessione al db";
+			}
+			else{
+				//connessione effettuata con successo. Posso lavorare sul database	
+				//eseguo la query
+				$query = "SELECT * FROM segnalazioni ";
+				
+				//salvo il risultato della query
+				$risultato = $mysqli->query($query);//mando in esecuzione la query
+			
+				if($mysqli->errno > 0){ 
+
+					//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
+					$mysqli->close();
+
+					return false;
+
+				}
+				else{
+					//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
+					$mysqli->close();
+					
+					if($risultato->num_rows == 0)
+						//la query non ha prodotto nessun risultato, lista vuota	
+						return "Database Segnalazioni Vuoto";
+					else{
+						//stampa della tabella con le informazioni presenti nel DB
+						echo "<table id='tbprd'>\n";
+						echo "<tr>\n";							
+						echo "<th class='thprd'> Id </th>\n";
+						echo "<th class='thprd'> Problem </th>\n";
+						echo "</tr>\n";
+						
+						while($row = $risultato->fetch_object()){
+							echo "<tr>\n";
+							echo "<td> $row->idProblem </td>\n";
+							echo "<td> $row->problem </td>\n";
+							echo "</tr>\n";
+						}
+						echo "</table>\n";
+							
+					}			
+				}
+			}	
+			
+		}		/* Fine getReports */
+		
+
 		// funzione per l'aggiunta di un attore nel DB
 		function addActor($id,$nome,$cognome,$film,$vita){
 			
@@ -237,7 +349,7 @@
 		}//fine viewUsers()
 		
 
-		// funzione per l'eliminazione di un attore nel DB
+		// funzione per l'eliminazione di un utente nel DB
 		function deleteUser($nickname){
 			
 			
