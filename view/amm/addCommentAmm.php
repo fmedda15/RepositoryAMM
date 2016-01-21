@@ -15,5 +15,4 @@
 		</div>
 	
 	</body>
-	<?php include_once('inc/footer.php');?>
 </html>
