@@ -7,10 +7,9 @@
 	
 		<div class="contenuto"> 
 
-			<p> Sei loggato come Amministratore della pagina <br><br></p>
+			<p> Logged in as administrator <br><br></p>
 
 		</div>
 	
 	</body>
-	<?php include_once('inc/footer.php');?>
 </html>
