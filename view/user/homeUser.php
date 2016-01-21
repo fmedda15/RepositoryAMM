@@ -7,10 +7,11 @@
 		<?php include_once('inc/barraMenuUser.php');?>
 		<div class="contenuto">
 		
-			<p> Accesso effettuato con successo <br><br></p>			
+			<p> Home <br><br></p>			
 
 		</div>
 	</body>
-	<!---Footer--->
-<?php include_once('inc/footer.php');?>
+	
+
+<?php include_once('inc/footer.php');?>	
 </html>
