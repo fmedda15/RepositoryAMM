@@ -1,3 +1,4 @@
+
 <?php
 	/*Variabili di livello applicazione contenenti i parametri per l'accesso al database*/	
 
@@ -13,15 +14,56 @@
 	/*Gestione della sessione con rispettive funzioni per Login e Logout*/
 
 	class ModelSession{ 
+		
+		// Funzione che invia le segnalazioni al DB
+
+		public function sendProblem($problem){
+			
+			$mysqli = new mysqli(); //Creazione dell'istanza 		
+			$mysqli->connect(Settings::$db_host,Settings::$db_user,Settings::$db_password,Settings::$db_name); //connessione al db
+	
+			//verifico la presenza di errori di connessione al db
+			if($mysqli->connect_errno != 0){
+				
+				//c'è un errore e lo gestisco
+				$idErrore = $mysqli->connect_errno; //salvo l'id dell'errore
+				$msg = $mysqli->connect_error; //salvo il messaggio dell'errore
+				return "Errore connessione al db";
+			}
+			else{
+				//connessione effettuata con successo. Posso lavorare sul database	
+				//eseguo la query
+				$query = " INSERT INTO segnalazioni (problem) VALUES ('$problem'); ";
+				
+				//salvo il risultato della query
+				$risultato = $mysqli->query($query);//mando in esecuzione la query
+			
+				if($mysqli->errno > 0){ 
+
+					//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
+					$mysqli->close();
+
+					return false;
+
+				}
+				else{
+					//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
+					$mysqli->close();
+					return " Segnalazione inviata con successo";
+				}	
+			
+			}
+		
+		} //Fine sendProblem
+
 
 		//Funzione per la registrazione di un nuovo utente nel DB
 
 		public function getRegister($nick,$pass,$nome,$cognome,$email){
 			
 			$ruolo="utente";
-			
-			$mysqli = new mysqli(); //Creazione dell'istanza 
-		
+
+			$mysqli = new mysqli(); //Creazione dell'istanza 		
 			$mysqli->connect(Settings::$db_host,Settings::$db_user,Settings::$db_password,Settings::$db_name); //connessione al db
 	
 			//verifico la presenza di errori di connessione al db
@@ -80,7 +122,6 @@
 			$id = "null"; //la utilizzero per salvare l'id dell'utente che logga
 
 			$mysqli = new mysqli(); //Creazione dell'istanza 
-		
 			$mysqli->connect(Settings::$db_host,Settings::$db_user,Settings::$db_password,Settings::$db_name); //connessione al db
 	
 			//verifico la presenza di errori di connessione al db
@@ -145,13 +186,13 @@
 				}
 				
 			}
-		}
+		} /* fine loggin*/
 	
 		
-		/* Funzione che permette di vedere tutti gli attori presenti nel DB*/		
+		/* Funzione che permette di vedere tutti gli attori presenti nel DB*/	
+	
 		public function getActors(){
 			$mysqli = new mysqli(); //Creazione dell'istanza 
-		
 			$mysqli->connect(Settings::$db_host,Settings::$db_user,Settings::$db_password,Settings::$db_name); //connessione al db
 	
 			//verifico la presenza di errori di connessione al db
