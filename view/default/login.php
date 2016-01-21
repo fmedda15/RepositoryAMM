@@ -6,7 +6,7 @@
 	<body>
 		<?php include_once('inc/barraMenuDefault.php');?>
 		<div class="contenuto">
-			<p> Login User <br><br></p>
+			<p> Login <br><br></p>
 			<!-- Form login -->
 			<form class="login" action="index.php?page=loginNow" method="POST">
 				<input type="text" name="nick" id="text" value="Nome" required="required" onclick="this.value='';"> <!-- nome text = nick -->
