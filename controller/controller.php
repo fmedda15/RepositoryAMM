@@ -15,7 +15,6 @@
 		public $modelUser; //funzioni utente
 		
 		//costruttore
-
 		public function __construct(){
 	  
 			$this->modelSession = new ModelSession();
@@ -24,7 +23,6 @@
 		}
 
 		/*Permette l'apertura delle viste a seconda del valore di $page. In questo modo si ha un unico punto d'accesso nel sito*/
-
 		public function invoke($page){
 
 			//gestione del login
@@ -40,6 +38,14 @@
 					
 					include "view/default/problems.php";
 
+				if($page == "sendProblems"){ /* invoco la funzione per registrare la segnalazione al DB */
+					
+					$problem = $_REQUEST["problems"];
+					$result = $this->modelSession->sendProblem($problem); //richiamo la sendProblem
+					
+					include "view/default/homeDefault.php";
+				}
+		
 				if($page == "actors"){ /* visualizza attori presenti nel DB */
 					
 					include "view/default/actorsDefault.php";
@@ -55,7 +61,7 @@
 					include "view/default/login.php";
 				}
 				
-				if($page == "signIn"){ /* nuovo utente */
+				if($page == "signIn"){ /* registrazione utente non presente nel DB */
 					
 					include "view/default/signIn.php";
 				}
@@ -129,8 +135,8 @@
 						include "view/amm/homeAmm.php";
 					}
 
-					if($page == "addActor"){
-						//visualizzazione i tutti gli attori presenti nel DB
+					if($page == "addActor"){ /* aggiunta attore */
+
 						include "view/amm/addActorsAmm.php";
 					}
 					
@@ -166,7 +172,7 @@
 						include "view/amm/homeAmm.php";
 					}
 					
-					if($page == "viewActor"){
+					if($page == "viewActor"){ /* visualizzazione attori */
 					
 						include "view/amm/actorsAmm.php";
 					}
@@ -191,7 +197,7 @@
 
 					}
 
-					if($page == "addCommentAmm"){
+					if($page == "addCommentAmm"){ /* aggiunta commento */
 						
 						include "view/amm/addCommentAmm.php";
 
@@ -206,12 +212,12 @@
 						include "view/amm/homeAmm.php";
 					}	
 
-					if($page == "viewComments"){
+					if($page == "viewComments"){ /* visualizzazione commenti*/
 						
 						include "view/amm/viewCommentsAmm.php";
 
 						}
-					if($page == "deleteComment"){
+					if($page == "deleteComment"){ /* cancellazione commento */
 						
 						include "view/amm/deleteCommentAmm.php";
 
@@ -223,7 +229,31 @@
 						$result = $this->modelAmm->deleteComment($id); //richiamo l'eliminazione						
 
 						include "view/amm/homeAmm.php";
+					}
+					
+					if($page == "viewReports"){
+					
+						include "view/amm/reports.php";
+											
 					}	
+					
+				
+					if($page == "deleteReport"){ /* visualizzazione segnalazioni */
+					
+						include "view/amm/deleteReport.php";
+											
+					}
+
+					if($page == "deleteReportNow"){
+					
+						$id = $_REQUEST["idReport"];
+						$result = $this->modelAmm->deleteReport($id); //richiamo l'eliminazione	delle segnalazioni					
+
+						include "view/amm/homeAmm.php";
+											
+					}	
+					
+					
 					
 					
 					
@@ -240,13 +270,13 @@
 
 					}
 
-					if($page == "viewActorsUser"){
+					if($page == "viewActorsUser"){ /* visualizzazione attori */
 						
 						include "view/user/viewActorsUser.php";
 
 					}
 
-					if($page == "addCommentUser"){
+					if($page == "addCommentUser"){ /* aggiunta commento */
 			
 						include "view/user/addCommentUser.php";
 					
@@ -262,20 +292,20 @@
 						include "view/user/homeUser.php";
 					}
 													
-					if($page == "viewCommentsUser"){
+					if($page == "viewCommentsUser"){ /* visualizzazione commenti */
 						
 						include "view/user/viewCommentsUser.php";
 					
 					}
 					
-					if($page == "profile"){					
+					if($page == "profile"){	 /* visualizzazione profilo */		
 
 						include "view/user/viewProfileUser.php";						
 
 					}
 							
 
-					if($page == "settings"){
+					if($page == "settings"){ /* modifica credenziali */
 						
 						include "view/user/changeProfile.php";
 					
