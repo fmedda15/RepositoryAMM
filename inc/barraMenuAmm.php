@@ -9,7 +9,7 @@
 				 <ul class="#">
 	    				<li> <a href="index.php?page=homeAmm" class="#"> Home </a>
 					<li>
-					<a href="#" class="index.php?page=homeAmm">Actors</a>
+						<a  href="index.php?page=viewActor">Actors</a>
 						<ul class="mainsubnav">
 								   <li> <a href="index.php?page=viewActor" class="#">View</a></li>	    	        
 								   <li> <a href="index.php?page=addActor" class="#">Add</a></li>
@@ -17,7 +17,7 @@
 							</ul>
 					</li>
 				    	<li>
-						<a href="index.php?page=homeAmm" class="#">Users</a>
+						<a href="index.php?page=viewUser" class="#">Users</a>
 
 					    		<ul class="mainsubnav">
 								   <li> <a href="index.php?page=viewUser" class="#">View</a></li>	    	        
@@ -25,7 +25,7 @@
 							</ul>
 				    	</li>
 					<li>
-						<a href="#" class="index.php?page=homeAmm">Comments</a>
+						<a href="index.php?page=viewComments">Comments</a>
 
 					    		<ul class="mainsubnav">
 								   <li> <a href="index.php?page=viewComments" class="#">View</a></li>	    	        
@@ -33,7 +33,16 @@
 								   <li> <a href="index.php?page=deleteComment" class="#">Delete</a></li>
 							</ul>
 				    	</li>
-				    	
+					
+				    	<li>
+						<a href="index.php?page=viewReports" class="account">Reports</a>
+
+							<ul class="mainsubnav">
+								   <li> <a href="index.php?page=viewReports" class="#">View</a></li>	    	        
+								   <li> <a href="index.php?page=deleteReport" class="#">Delete</a></li>
+							</ul>
+					
+					</li>
 				</ul>
 		</div>
 	 
