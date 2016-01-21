@@ -20,13 +20,13 @@ di utenti, l'eliminazione di commenti e la comunicazione di avvisi diretti agli 
 
 Il database dell'applicazione è stato progettato con quattro tabelle, nel seguente modo : 
 
--utente : La tabella utente identifica gli utenti che possono loggare nel sito internet. Un generico utente possiede il proprio nickname, univoco per tutti e che permette il riconoscimento dell'user, una password che gli permette di accedere al sito tramite il login e i vari dati persali, che sono nome, cognome e email; Oltre a questi dati è presente anche un campo ruolo, usato per differire gli utenti standard dall'amministratore di sistema
+-utente : La tabella utente identifica gli utenti che possono loggare nel sito internet. Un generico utente possiede il proprio nickname, univoco per tutti e che permette il riconoscimento dell'user, una password, che gli permette di accedere al sito tramite il login, e i vari dati persali, che sono: nome, cognome ed email; Oltre a questi dati è presente anche un campo ruolo, usato per differire gli utenti standard dall'amministratore di sistema
 		  
--attore : La tabella attore rappresenta una attore presente nel sito. Ogni attore possiede un Id unico, per permetterne il riconoscimento,e le varie informazioni riguardanti ad esso, che sono: nome, cognome, film che rappresenta la filmografia e vita che rappresenta la vita privata.
+-attore : La tabella attore rappresenta una attore presente nel sito. Ogni attore possiede un Id unico, per permetterne il riconoscimento, e le varie informazioni riguardanti ad esso, che sono: nome, cognome, film che rappresenta la filmografia e vita che rappresenta la vita privata.
 
--commenti : La tabella commento identifica i commenti che si possono rilasciare nel sito, ogni commento possiede 3 campi, che sono: id che permette di riconoscere il commento nel sito, user che rappresenta una chiave esterna garantendo il riconoscimento dell'user che ha postato quel determinato commento, ed infine il campo testo, ovvero il commento vero e proprio.
+-commento : La tabella commento identifica i commenti che si possono rilasciare nel sito, ogni commento possiede 3 campi, che sono: id, che permette di riconoscere il commento nel sito, user, che rappresenta una chiave esterna garantendo il riconoscimento dell'user che ha postato quel determinato commento, ed infine il campo testo, ovvero il commento vero e proprio.
 
--segnalazioni : tabella che contiene le varie segnalazioni mandati dagli utenti, è composta da un id unico per ogni segnalazione e un campo di tipo text, contenente il problema segnalato,
+-segnalazione : tabella che contiene le varie segnalazioni mandati dagli utenti, è composta da un id unico per ogni segnalazione e un campo di tipo text, contenente il problema segnalato,
 
 Per l'MVC ho diviso i file : un solo Controller che gestisce i tre model : 
 
