@@ -1,7 +1,7 @@
 <!-- Form login -->
 <form id="login" action="index.php?page=login" method="POST">
-	<input type="text" name="nome" id="text" value="" required="required">
-	<br><input type="password" name="password" id="text" required="required">
+	<input type="text" name="nome" id="text" value="" required="required"  onclick="this.value='';">
+	<br><input type="password" name="password" id="text" required="required"  onclick="this.value='';">
 	<br><button id="bottom">Login</button>
 </form> 
 	
