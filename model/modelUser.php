@@ -75,51 +75,37 @@
 				$msg = $mysqli->connect_error; //salvo il messaggio dell'errore
 				return "Errore connessione al db";
 			}
-			else{
-				//devo dare al commento un id non esistente, per non creare contrasto con la primarykey
-				$id = 1;
-				
-				// devo dare un id al commento non presente nel DB, in modo da non creare contrasti
-				for ($controllo = 0; $controllo <= 1000; $controllo++) {
-				
-					$query = " SELECT * FROM commento WHERE id='$id' "; 
-					//salvo il risultato della query
-					$risultato = $mysqli->query($query);//mando in esecuzione la query
-			
-					//l'id creato non esiste nel DB, posso procedere con la registrazione del commento
-					if($risultato->num_rows == 0){ 
-						$controllo = 10001;
-						$query2 = "INSERT INTO commento (id,user,testo) VALUES ('$id','$user','$testo'); ";
-						
-						$risultato = $mysqli->query($query2);
+			else{		
 
-						if($mysqli->errno > 0){
-							
-							//in caso di errore, vuol dire che c'è almeno un ordine in corso per quella carta e non posso eliminarla	
-							//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
-							$mysqli->close();
-							
-							return "Non è stato possibile aggiungere il commento!";					
-						}
-						else{
-							//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
-							$mysqli->close();
-						
-							return "commento aggiunto correttamente";
+				$query2 = "INSERT INTO commento (user,testo) VALUES ('$user','$testo'); ";
+				
+				$risultato = $mysqli->query($query2);
 
-						}
-					}
-					// idp resente nel DB in un altro commento, devo continuare a cercare
-					else 
-						$id++;; 
+				if($mysqli->errno > 0){
+					
+					//in caso di errore, vuol dire che c'è almeno un ordine in corso per quella carta e non posso eliminarla	
+					//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
+					$mysqli->close();
+					
+					return "Non è stato possibile aggiungere il commento!";					
 				}
-			}	
+
+				else{
+					//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
+					$mysqli->close();
+				
+					return "commento aggiunto correttamente";
+
+				}
+			}
+				
 			
 			
 		}//fine addComment()
 		
 
 	/* Funzione che permette di vedere tutti gli attori presenti nel DB*/		
+
 		public function viewActorsUser(){
 			$mysqli = new mysqli(); //Creazione dell'istanza 
 		
@@ -185,9 +171,7 @@
 	// funzione per la visualizzazione dei commenti nel DB
 		function viewProfile($user){
 			
-			
 			$mysqli = new mysqli(); //Creazione dell'istanza 
-		
 			$mysqli->connect(Settings::$db_host,Settings::$db_user,Settings::$db_password,Settings::$db_name); //connessione al db
 	
 			//verifico la presenza di errori di connessione al db
@@ -287,13 +271,13 @@
 
 					//non mi serve più lavorare sul db, quindi chiudo la connessione con esso
 					$mysqli->close();
-					return "Errore di registrazione";
+					return "Errore di modifica";
 				
 				}
 				
 				else{
 					$mysqli->close();
-					return "Utente registrato con successo";				
+					return "Modifica avvenuta con successo";				
 				}
 			}
 		}
