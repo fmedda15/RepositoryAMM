@@ -1,5 +1,6 @@
 body{
 	font-family:Liberation Serif;
+
 }
 
 
@@ -96,9 +97,16 @@ body{
 	position:relative;
 }
 
+
+
 .menudx li:active ul, li:hover ul{
 	display: block;
 }
+
+
+.mainsubnav li:hover ul{
+	color:#D03316;
+	}
 
 /* spazio presente sotto il menu */
 .sottomenu{
@@ -115,7 +123,7 @@ body{
 	top:20px;
 	bottom:20px;
 	font-family:Liberation Serif;
-	height:50px;
+	height:500px;
 	position:relative;
 	width:1250px;
 	left:160px;
@@ -125,19 +133,22 @@ body{
 	margin: center;
 	font-weight: 700;
 	line-height: 25px; /* centrare verticalmente */
+	
+	
 }
+
 
 /* gestione footer */
 footer{
-	top:350px;
+	/*top:350px;*/
 	font-family:Liberation Serif;
-	height:50px;
-	position:relative;
+	height:10px;
 	width:1250px;
 	left:160px;
 	color: gray;
 	font-weight: 700;	
 	position: relative;
+	
 }
 
 footer a{
@@ -147,11 +158,12 @@ footer a{
 	text-align: left;
 }
 
-/*  Gestione tabelle */
+/*  Gestione tabelle with dati DB*/
 
 table{
 	text-align:center;
 	background-color:white;
+	text-align:center;
 }
 
 th.thprd{
@@ -162,6 +174,7 @@ th.thprd{
 	background-color: #A00000;
 	border: 1px solid black;
 	padding: 6px;
+	text-align:center;
 }
 
 table#tbprd td{
@@ -170,10 +183,27 @@ table#tbprd td{
 	padding: 10px;
 	border: 1px solid black;
 	color: #141414;
+	text-align:center;
 }
 
 table#tbprd{
 
 	border-collapse: collapse;
+	text-align:center;
+
+}
+
+/* Gestione bottoni */
+
+#bottom{
+	height:35px;
+	width:180px;
+}
+
+/* Gestioni text */
+#text{
+	height:30px;
+	width:178px;
+	text-align:center;
 
 }
