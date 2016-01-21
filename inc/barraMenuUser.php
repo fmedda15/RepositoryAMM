@@ -9,7 +9,7 @@
 	    				<li> <a href="index.php?page=homeUser" class="#"> Home </a>
 					<li> <a href="index.php?page=viewActorsUser" class="#"> Actors </a>	
 				    	<li>
-						<a href="index.php?page=homeUser" class="#">Comments</a>
+						<a href="index.php?page=viewCommentsUser" class="#">Comments</a>
 
 					    		<ul class="mainsubnav">
 								   <li> <a href="index.php?page=viewCommentsUser" class="#">View</a></li>	    	        
