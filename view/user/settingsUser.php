@@ -6,11 +6,10 @@
 		<?php include_once('inc/barraMenuUser.php');?>
 	
 		<div class="contenuto"> 
-			<p> Actors <br><br> </p>
-	
+			<p> Comments <br><br> </p>
 			<?php
 
-				$query = $this->modelUser->viewActorsUser(); //richiamo la viewComments() dal modelSession
+				$query = $this->modelUser->viewCommentsUser(); // Richiamo la viewComments
 				
 			?>
 		</div>
