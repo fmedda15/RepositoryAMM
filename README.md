@@ -12,7 +12,7 @@
 l'applicazione ActorsDB simula un sito internet per la visualizzazione online degli attori presenti nel DB. Un utente non 
 registrato può segnalare eventuali errori al sito, visualizzare gli attori e le informazioni legate ad essi, un utente registrato, dopo aver effettuato il rispettivo login, può, oltre che vedere le informazioni legate agli attori, lasciare commenti nel sito (creando discussioni assieme agli altri utenti) e anche inviare segnalazioni d'errore al sito. 
 L'amministratore invece deve occuparsi di tenere aggiornato il DB, con l'aggiunta di nuovi attori, l'eliminazione 
-di utenti e commenti e la comunicazione di avvisi diretti agli utenti della pagina riguardanti qualsiasi
+di utenti, l'eliminazione di commenti e la comunicazione di avvisi diretti agli utenti della pagina riguardanti qualsiasi
  novità sul sito.
 
 
